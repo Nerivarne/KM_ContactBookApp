@@ -1,0 +1,70 @@
+﻿@using ContactBook.Models
+@model Contact
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit contact</title>
+</head>
+<style>
+	table, th, td {
+		border: 1px solid black;
+		text-align: center;
+	}
+</style>
+<body>
+	<a href="logout">Logout >></a>
+	<br />
+	<a href="contacts">All my contacts >></a>
+	<h1>Edit contact</h1>
+	<br />
+	<h2>Original contact:</h2>
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Telephone number</th>
+				<th>Email</th>
+				<th>Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>@Model.FirstName</td>
+				<td>@Model.LastName</td>
+				<td>@Model.TelephoneNumber</td>
+				<td>@Model.Email</td>
+				<td>@Model.Address</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+	<h2>Edit contact:</h2>
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th>NEW First name</th>
+				<th>NEW Last name</th>
+				<th>NEW Telephone number</th>
+				<th>NEW Email</th>
+				<th>NEW Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="edit" method="post">
+			<tr>
+				<td><input type="text" name="newFirstName" /></td>
+				<td><input type="text" name="newLastName" /></td>
+				<td><input type="number" name="newTelephoneNumber" /></td>
+				<td><input type="text" name="newEmail" /></td>
+				<td><input type="text" name="newAddress" /></td>
+			</tr>
+			<input type="hidden" value="@Model.Id" name="contactId" />
+			<input type="submit" value="Edit" />
+			</form>
+		</tbody>
+	</table>
+</body>
+</html>

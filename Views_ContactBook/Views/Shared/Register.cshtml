@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+	<a href="/">Login >></a>
+	<h1>Register a new user: </h1>
+	<form action="register" method="post">
+		<label for="email">Email:</label>
+		<input type="text" name="email" /><br>
+		<label for="password">Password:</label>
+		<input type="password" name="password" id="password" /><br>
+		<label for="password-again">Password again:</label>
+		<input type="password" name="password-again" id="password-again" onkeyup="validate_password()" />
+		<span id="wrong_pass_alert"></span>
+		<input type="submit" value="create" onclick="wrong_pass_alert()" />
+	</form>
+	<script>
+		function validate_password() {
+
+			var pass = document.getElementById('password').value;
+			var confirm_pass = document.getElementById('password-again').value;
+			if (pass != confirm_pass) {
+				document.getElementById('wrong_pass_alert').style.color = 'red';
+				document.getElementById('wrong_pass_alert').innerHTML
+				  = '☒ Use same password';
+				document.getElementById('create').disabled = true;
+				document.getElementById('create').style.opacity = (0.4);
+			} else {
+				document.getElementById('wrong_pass_alert').style.color = 'green';
+				document.getElementById('wrong_pass_alert').innerHTML =
+					'🗹 Password Matched';
+				document.getElementById('create').disabled = false;
+				document.getElementById('create').style.opacity = (1);
+			}
+		}
+
+		function wrong_pass_alert() {
+			if (document.getElementById('pass').value != "" &&
+				document.getElementById('confirm_pass').value != "") {
+				alert("Your response is submitted");
+			} else {
+				alert("Please fill all the fields");
+			}
+		}
+	</script>
+</body>
+</html>
